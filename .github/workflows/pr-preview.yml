@@ -18,7 +18,6 @@ jobs:
         uses: dokku/github-action@master
         with:
           command: review-apps:create
-          branch: {{ github.head_ref }}
           git_remote_url: ${{secrets.GIT_REMOTE_URL }}${{ github.head_ref }}
           review_app_name: ${{ github.head_ref }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
