@@ -1,3 +1,15 @@
+# v0.0.3 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- wip #7 python app example [#8](https://github.com/KarmaComputing/minimalcd/pull/8) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.2 (Tue Apr 12 2022)
 
 #### 🐛 Bug Fix
