@@ -1,3 +1,15 @@
+# v0.0.6 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- #6 Database schema migrations are in version control and migrations run at all startup [#11](https://github.com/KarmaComputing/minimalcd/pull/11) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.5 (Tue Apr 12 2022)
 
 #### 🐛 Bug Fix
