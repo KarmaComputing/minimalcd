@@ -17,9 +17,8 @@ jobs:
       - name: Push to dokku
         uses: dokku/github-action@master
         with:
-          command: review-apps:create
+          branch: ${{ github.head_ref }}
           git_remote_url: ${{secrets.GIT_REMOTE_URL }}${{ github.head_ref }}
-          review_app_name: ${{ github.head_ref }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: click to see your PR web address
@@ -36,19 +35,3 @@ jobs:
               repo: context.repo.repo,
               body: "🙌 Live preview is here: http://${{ github.head_ref }}.pcpink.co.uk"
             })
-
-
-  destroy:
-    runs-on: ubuntu-latest
-    # only run when a pull request is closed
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    steps:
-      - name: Destroy the review app
-        uses: dokku/github-action@master
-        with:
-          # destroy a review app
-          command: review-apps:destroy
-          git_remote_url: ${{secrets.GIT_REMOTE_URL }}${{ github.head_ref }}
-          # specify a name for the review app
-          review_app_name: ${{ github.head_ref }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
