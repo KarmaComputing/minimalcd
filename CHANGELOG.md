@@ -1,3 +1,15 @@
+# v0.0.7 (Tue Apr 12 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Update readme principles ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.6 (Tue Apr 12 2022)
 
 #### 🐛 Bug Fix
