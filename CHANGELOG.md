@@ -1,3 +1,15 @@
+# v0.0.2 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- Fix #3 issue template [#4](https://github.com/KarmaComputing/minimalcd/pull/4) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.1 (Tue Apr 12 2022)
 
 :tada: This release contains work from a new contributor! :tada:
