@@ -79,3 +79,17 @@ chmod +x auto-linux
 ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku apps:destroy --force $APP_NAME
 ```
 
+#### Troubleshooting
+
+Dokku by default expects your `Dockerfile` to be in the root directory, **and**
+the default working directory is the root of the repo.
+
+For changing the name/location of the Dockerfile, you can use the `builder-dockerfile:set`:
+```
+ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku builder-dockerfile:set $APP_NAME dockerfile-path Dockerfile
+```
+For changing the working directory of the `docker build` context, use:
+```
+ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku builder:set minimalcd build-dir src
+```
+See https://github.com/dokku/dokku/pull/4502 for more details.
