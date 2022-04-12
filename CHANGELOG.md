@@ -1,3 +1,20 @@
+# v0.0.4 (Tue Apr 12 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of github.com:KarmaComputing/minimalcd into main ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- Hotfix #7 set build context dir and chmod entrypoint ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- Revert "debug requirements not found" ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- Revert "debug dockerfile" ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- debug dockerfile ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- debug requirements not found ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.3 (Tue Apr 12 2022)
 
 #### 🐛 Bug Fix
