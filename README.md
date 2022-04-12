@@ -45,13 +45,13 @@ git remote add dokku $DOKKU_USERNAME@$DOKKU_SERVER_IP:$APP_NAME
 git remote -v show
 ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku apps:create $APP_NAME
 ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku git:initialize $APP_NAME
-ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku builder-dockerfile:set $APP_NAME dockerfile-path src/Dockerfile
+ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku builder:set minimalcd build-dir src
 git push dokku main
 ```
 
 ### Example:
 ```
-APP_NAME=myapp
+APP_NAME=minimalcd
 DOKKU_SERVER_IP=192.168.1.10
 DOKKU_USERNAME=dokku
 git remote add dokku $DOKKU_USERNAME@$DOKKU_SERVER_IP:$APP_NAME
