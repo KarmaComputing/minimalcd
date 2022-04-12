@@ -4,6 +4,24 @@
 
 - [x] All commits to main branch create a new release automatically
 
+## Local Development
+
+```
+cd src
+python3.9 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+ ```
+
+### Run locally
+```
+cd src
+. venv/bin/activate
+export FLASK_APP=minimalcd
+export FLASK_DEBUG=1
+flask run
+```
+http://127.0.0.1:5000
 
 ## Build
 ```
