@@ -9,8 +9,7 @@ RUN apk add --update --no-cache build-base \
 COPY . /usr/src/app/minimalcd/
 WORKDIR /usr/src/app/minimalcd/
 
-RUN ls -l
-RUN pip install -r ./requirements.txt
+RUN pip install -r requirements.txt
 RUN pip install uwsgi
 RUN export FLASK_APP=minimalcd;
 EXPOSE 80
