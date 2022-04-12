@@ -1,3 +1,15 @@
+# v0.0.5 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- Fix #9 document build context dokku [#10](https://github.com/KarmaComputing/minimalcd/pull/10) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.4 (Tue Apr 12 2022)
 
 #### ⚠️ Pushed to `main`
