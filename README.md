@@ -1,6 +1,8 @@
 # Minimal Viable CD
 
-- All commits to main branch create a new release automatically
+[![Release](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml/badge.svg)](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml)
+
+- [x] All commits to main branch create a new release automatically
 
 
 ## Build
