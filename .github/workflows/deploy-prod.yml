@@ -1,0 +1,24 @@
+name: Updating merged branch to the production site
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+jobs:
+  update_all_sites:
+    name: Update APP
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Setup ssh access
+      run: |
+        set -x
+        mkdir -p ~/.ssh
+        eval `ssh-agent -s`
+        ssh-add - <<< "${{ secrets.SSH__PRIVATE_KEY}}"
+        ssh-keyscan ${{ secrets.DOKKU_HOST }}>> ~/.ssh/known_hosts
+    - name: Update APP
+      run: |
+        set -x
+        eval `ssh-agent -s`
+        ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY}}"
+        ssh dokku@${{ secrets.DOKKU_HOST }} -C "dokku git:sync --build ${{ APP_NAME }}"
