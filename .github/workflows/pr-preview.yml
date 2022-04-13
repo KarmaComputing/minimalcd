@@ -18,7 +18,7 @@ jobs:
         uses: dokku/github-action@master
         with:
           command: review-apps:create
-          git_remote_url: ${{secrets.GIT_REMOTE_URL }}${{ secrets.APP_NAME }}
+          git_remote_url: '${{ secrets.GIT_REMOTE_URL }}${{ secrets.APP_NAME }}'
           review_app_name: ${{ github.head_ref }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
@@ -46,7 +46,7 @@ jobs:
         with:
           # destroy a review app
           command: review-apps:destroy
-          git_remote_url: ${{secrets.GIT_REMOTE_URL }}${{ secrets.APP_NAME }}
+          git_remote_url: '${{ secrets.GIT_REMOTE_URL }}${{ secrets.APP_NAME }}'
           # specify a name for the review app
           review_app_name: ${{ github.head_ref }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
