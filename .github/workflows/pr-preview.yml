@@ -1,28 +1,77 @@
 ---
-name: 'deploy pr preview'
+# When a push is made to a branch, deploy an instance of the app using
+# that branch. 
+# The deployed url will be <branchname>.<domain>
 
-# yamllint disable-line rule:truthy
+name: Deploy pr preview
 on:
   pull_request
-
 jobs:
-  deploy:
+  deploy-pr:
     runs-on: ubuntu-20.04
+    timeout-minutes: 60
+    environment: testing
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     steps:
-      - name: Cloning repo
-        uses: actions/checkout@v2
+      - name: Dump context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: |
+          echo $GITHUB_CONTEXT
+      - name: Prepare runner with ssh keys
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+        run: |
+          set -x
+          mkdir -p ~/.ssh
+          eval `ssh-agent -s`
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          ssh-keyscan $DOKKU_HOST >> ~/.ssh/known_hosts
+      - name: Set subdomain (ensure is lowercase for dokku)
+        run: |
+          set -x
+          echo SUBDOMAIN=`echo "${{ github.head_ref }}" | tr '[:upper:]' '[:lower:]' | cut -c -60` >> $GITHUB_ENV
+          echo $GITHUB_ENV
+      - name: Create dokku app for pr branch if dosent already exist using dokku apps:create
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+        run: |
+          set -x
+          echo The PR was raised by: ${{ github.event.pull_request.user.login }}
+          eval `ssh-agent -s`
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          echo deleting dokku app ${{ github.head_ref }}
+          ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
+          echo Creating dokku app ${{ github.head_ref }}
+          ssh dokku@$DOKKU_HOST -C "dokku apps:create ${{ env.SUBDOMAIN }}" | true
+          echo The url will be ${{ github.head_ref }}.pcpink.co.uk
+          ssh dokku@$DOKKU_HOST -C "dokku git:initialize ${{ env.SUBDOMAIN }}"
+          ssh dokku@$DOKKU_HOST -C "dokku git:set ${{ env.SUBDOMAIN }} deploy-branch ${{ github.head_ref }}"
+          # set Stripe test keys as env vars dor dokku/docker
+          ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} STRIPE_TEST_SECRET_KEY=${{ secrets.STRIPE_TEST_SECRET_KEY }}"
+          ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} STRIPE_TEST_PUBLISHABLE_KEY=${{ secrets.STRIPE_TEST_PUBLISHABLE_KEY }}"
+          ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} STRIPE_CONNECT_ACCOUNT_ANNOUNCER_HOST=${{ secrets.STRIPE_CONNECT_ACCOUNT_ANNOUNCER_HOST }}"
+          ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} FLASK_ENV=development"
+
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: Push to dokku
-        uses: dokku/github-action@master
+      - name: Deploy branch ${{ github.head_ref }} to dokku
+        uses: idoberko2/dokku-deploy-github-action@v1
         with:
-          command: review-apps:create
-          git_remote_url: '${{ secrets.GIT_REMOTE_URL }}${{ secrets.APP_NAME }}'
-          review_app_name: ${{ github.head_ref }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: click to see your PR web address
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          dokku-host: ${{ secrets.DOKKU_HOST }}
+          app-name: ${{ env.SUBDOMAIN }}
+          git-push-flags: '--force'
+          remote-branch: ${{ github.head_ref }}
+      - name: Click to see your PR web address
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
         run: |
           echo Visit your pr here: http://${{ github.head_ref }}.pcpink.co.uk
       - name: 'Comment PR with web address of application live preview'
@@ -36,17 +85,3 @@ jobs:
               repo: context.repo.repo,
               body: "🙌 Live preview is here: http://${{ github.head_ref }}.pcpink.co.uk"
             })
-  destroy_review_app:
-    runs-on: ubuntu-20.04
-    # only run when a pull request is closed
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    steps:
-      - name: Destroy the review app
-        uses: dokku/github-action@master
-        with:
-          # destroy a review app
-          command: review-apps:destroy
-          git_remote_url: '${{ secrets.GIT_REMOTE_URL }}${{ secrets.APP_NAME }}'
-          # specify a name for the review app
-          review_app_name: ${{ github.head_ref }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
