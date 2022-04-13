@@ -3,6 +3,8 @@
 [![Release](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml/badge.svg)](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml)
 
 - [x] All commits to main branch create a new release automatically
+- [x] Database migrations are version controlled and ran upon app startup
+- [ ] A backup/snapshot of any database is taken pre and post each release
 
 ## Local Development
 
@@ -12,6 +14,11 @@ python3.9 -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
  ```
+
+Env settings:
+```
+cp .env.example .env
+```
 
 ### Run locally
 ```
