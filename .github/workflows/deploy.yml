@@ -1,12 +1,12 @@
-name: Updating merged branch to the production site
+name: Deploy
 on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - 
 jobs:
-  update_all_sites:
-    name: Update APP
+  deploy:
+    name: Deploy
     runs-on: ubuntu-20.04
     steps:
     - name: Setup ssh access
@@ -16,7 +16,7 @@ jobs:
         eval `ssh-agent -s`
         ssh-add - <<< "${{ secrets.SSH__PRIVATE_KEY}}"
         ssh-keyscan ${{ secrets.DOKKU_HOST }}>> ~/.ssh/known_hosts
-    - name: Update APP
+    - name: Deploy dokku app
       run: |
         set -x
         eval `ssh-agent -s`
