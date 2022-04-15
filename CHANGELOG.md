@@ -1,3 +1,15 @@
+# v0.0.12 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #13 add environment to deploy.yml ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.11 (Fri Apr 15 2022)
 
 #### ⚠️ Pushed to `main`
