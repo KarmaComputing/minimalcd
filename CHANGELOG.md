@@ -1,3 +1,20 @@
+# v0.0.8 (Fri Apr 15 2022)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, null[@joeltejeda](https://github.com/joeltejeda), for all your work!
+
+#### 🐛 Bug Fix
+
+- #13 adding action to deploye merged branches [#14](https://github.com/KarmaComputing/minimalcd/pull/14) ([@joeltejeda](https://github.com/joeltejeda) [@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 2
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.7 (Tue Apr 12 2022)
 
 #### ⚠️ Pushed to `main`
