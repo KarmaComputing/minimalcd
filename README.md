@@ -1,12 +1,18 @@
 # Minimal Viable Continuous delivery (CD)
 
-[![Release](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml/badge.svg)](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml)
+> Have you ever wanted to learn Devops, asked "What is Devops" or wanted to start learning DevOps?<br /><br />
+This is a minimal viable example of many of the concepts in DevOps which might help you continue to uncover better ways of doing it and help others learn too. <br /><br />Explore this repo, [ask questions](https://github.com/KarmaComputing/minimalcd/discussions/20) and learn
 
-- [x] All commits to main branch create a new release automatically
-- [x] Database migrations are version controlled and ran upon app startup
-- [x] When a pull request gets merged into the main branch, the latest application is deployed
-- [x] A backup/snapshot of any database is taken pre and post each release
-- [x] Codebase is regularly automatically scanned for known security issues
+This is a complete web application which:
+
+- [x] ✔️ Automatically generates releases based on semantic version for every merge into the `main` branch (using [intuit/auto](https://github.com/intuit/auto))
+- [x] 🗄️ Database migrations are version controlled and ran upon app startup
+    - This repository uses [alembic](https://alembic.sqlalchemy.org/en/latest/) (python) but you might use [alembic/doctrine](https://github.com/doctrine/migrations) (php), flyway/liquibase (java) - the concept is the same
+- [x] 🔃 When a pull request gets merged into the main branch, the latest application is deployed (using [Dokku](https://dokku.com/))
+    - You might use Kubernetes with ArgoCD (the underlying concepts are the same)
+- [x] 💾 A backup/snapshot of any database is taken pre and post each release
+- [x] 🚨 Codebase is regularly automatically scanned for known security issues
+- [x] ☸️ At each release a container is built and published to a container registry
 
 ## Local Development
 
