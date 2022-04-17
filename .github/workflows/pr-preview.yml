@@ -10,7 +10,9 @@ jobs:
   pr_preview:
     runs-on: ubuntu-20.04
     timeout-minutes: 60
-    environment: Testing
+    environment:
+      name: Testing
+      url: ${{ steps.set_subdomain.preview_url }}
     concurrency:
       group: ${{ github.ref }}
       cancel-in-progress: true
@@ -40,9 +42,11 @@ jobs:
           ssh-keyscan $DOKKU_HOST >> ~/.ssh/known_hosts
 
       - name: Set subdomain (ensure is lowercase for dokku)
+        id: set_subdomain
         run: |
           set -x
           echo SUBDOMAIN=`echo "${{ github.event.pull_request.number }}-minimalcd" | tr '[:upper:]' '[:lower:]' | cut -c -60` >> $GITHUB_ENV
+          echo "::set-output name=preview_url::${{ env.SUBDOMAIN }}.${{ secrets.DOKKU_DOMAIN }}"
 
       - name: Create dokku app for pr branch if dosent already exist using dokku apps:create
         env:
