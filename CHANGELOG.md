@@ -1,3 +1,15 @@
+# v0.0.21 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #13 simplify deploy output messaging ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.20 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
