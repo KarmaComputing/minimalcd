@@ -1,7 +1,7 @@
 ---
 # When a push is made to a branch, deploy an instance of the app using
 # that branch. 
-# The deployed url will be <branchname>.<domain>
+# The deployed url will be <pr-number>-<app-name>.<domain>
 
 name: PR Preview
 on:
@@ -16,27 +16,93 @@ jobs:
       cancel-in-progress: true
     steps:
 
-      - name: Cloning repo
-        uses: actions/checkout@v2
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
 
-      - name: Push to dokku
-        uses: dokku/github-action@master
+      - name: Prepare runner with ssh keys
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+        run: |
+          set -x
+          mkdir -p ~/.ssh
+          eval `ssh-agent -s`
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          ssh-keyscan $DOKKU_HOST >> ~/.ssh/known_hosts
+
+      - name: Set subdomain (ensure is lowercase for dokku)
+        run: |
+          set -x
+          echo SUBDOMAIN=`echo "${{ github.event.pull_request.number }}-minimalcd" | tr '[:upper:]' '[:lower:]' | cut -c -60` >> $GITHUB_ENV
+
+      - name: Create dokku app for pr branch if dosent already exist using dokku apps:create
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+        run: |
+          set -x
+          echo The PR was raised by: ${{ github.event.pull_request.user.login }}
+          eval `ssh-agent -s`
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          echo deleting dokku app ${{ github.head_ref }}
+          ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
+          echo Creating dokku app ${{ github.head_ref }}
+          ssh dokku@$DOKKU_HOST -C "dokku apps:create ${{ env.SUBDOMAIN }}" | true
+          ssh dokku@$DOKKU_HOST -C "dokku git:initialize ${{ env.SUBDOMAIN }}"
+          ssh dokku@$DOKKU_HOST -C "dokku git:set ${{ env.SUBDOMAIN }} deploy-branch ${{ github.head_ref }}"
+
+      - name: Deploy branch ${{ github.head_ref }} to dokku
+        uses: idoberko2/dokku-deploy-github-action@v1
         with:
-          # create a review app
-          command: review-apps:create
-          git_remote_url: 'https://github.com/KarmaComputing/minimalcd.git'
-          branch: 'main'
-          # specify a name for the review app
-          review_app_name: review-appname-${{ github.event.pull_request.number }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          dokku-host: ${{ secrets.DOKKU_HOST }}
+          app-name: ${{ env.SUBDOMAIN }}
+          git-push-flags: '--force'
+          remote-branch: ${{ github.head_ref }}
+      
 
   destroy_pr_preview:
     runs-on: ubuntu-latest
     # only run when a pull request is closed
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     steps:
+      - name: Work out preview url subdomain
+        run: |
+          set -x
+          echo SUBDOMAIN=`echo "${{ github.event.pull_request.number }}-minimalcd" | tr '[:upper:]' '[:lower:]' | cut -c -60` >> $GITHUB_ENV
+          
+      - name: Prepare runner with ssh keys
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+        run: |
+          set -x
+          mkdir -p ~/.ssh
+          eval `ssh-agent -s`
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          ssh-keyscan $DOKKU_HOST >> ~/.ssh/known_hosts
+
+      - name: Create dokku app for pr branch if dosent already exist using dokku apps:create
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+        run: |
+          set -x
+          echo The PR was raised by: ${{ github.event.pull_request.user.login }}
+          eval `ssh-agent -s`
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          echo deleting dokku app ${{ github.head_ref }}
+          ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
+
       - name: Destroy the review app
         uses: dokku/github-action@master
         with:
