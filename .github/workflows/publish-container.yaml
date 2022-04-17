@@ -19,10 +19,9 @@ env:
   IMAGE_NAME: minimalcd
   DOCKER_BUILDKIT: 1
 
-
-  # Push image to GitHub Packages.
+jobs:
+# Push image to GitHub Packages.
   push:
-
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
