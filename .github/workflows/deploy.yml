@@ -16,11 +16,10 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now going to attempt to deploy the latest version of this app."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Deploy dokku app
+      - name: Deploy
         run: |
           set -x
           mkdir -p ~/.ssh
@@ -29,4 +28,4 @@ jobs:
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY}}"
           ssh dokku@${{ secrets.DOKKU_HOST }} -C "dokku git:sync --build minimalcd" https://github.com/KarmaComputing/minimalcd.git main
 
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "This job's status is: ${{ job.status }}."
