@@ -1,3 +1,15 @@
+# v0.0.16 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Release -> Cut Release ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.15 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
