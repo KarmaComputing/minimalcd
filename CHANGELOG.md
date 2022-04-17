@@ -1,3 +1,15 @@
+# v0.0.15 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Added CHECKS file for (very) basic health check #13 ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.14 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
