@@ -1,3 +1,15 @@
+# v0.0.33 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #18 add mising jobs stanza ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.32 (Sun Apr 17 2022)
 
 #### 🐛 Bug Fix
