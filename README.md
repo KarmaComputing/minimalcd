@@ -92,7 +92,7 @@ chmod +x auto-linux
 ./auto-linux create-labels
 ```
 
-# Destory / Teardown everything
+# Destroy / Teardown everything
 
 ```
 ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku apps:destroy --force $APP_NAME
