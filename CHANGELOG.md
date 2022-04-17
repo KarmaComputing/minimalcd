@@ -1,3 +1,15 @@
+# v0.0.14 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- default git dync to main branch #13 ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.13 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
