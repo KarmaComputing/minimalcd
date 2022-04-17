@@ -1,3 +1,19 @@
+# v0.0.27 (Sun Apr 17 2022)
+
+#### 🐛 Bug Fix
+
+- #14 #15 destroy preview when merged [#16](https://github.com/KarmaComputing/minimalcd/pull/16) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- #15 run BACKUP_SCRIPT during testing [#16](https://github.com/KarmaComputing/minimalcd/pull/16) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- #15 always attempt unlock app during preview [#16](https://github.com/KarmaComputing/minimalcd/pull/16) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- #15 fix preview url comments [#16](https://github.com/KarmaComputing/minimalcd/pull/16) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+- wip #15 run backupscript during test/release [#16](https://github.com/KarmaComputing/minimalcd/pull/16) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.26 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
