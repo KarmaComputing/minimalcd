@@ -23,6 +23,7 @@ jobs:
       - name: Deploy dokku app
         run: |
           set -x
+          mkdir -p ~/.ssh
           ssh-keyscan ${{ secrets.DOKKU_HOST }}>> ~/.ssh/known_hosts
           eval `ssh-agent -s`
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY}}"
