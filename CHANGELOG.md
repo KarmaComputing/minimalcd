@@ -1,3 +1,116 @@
+# v0.0.16 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Release -> Cut Release ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.15 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Added CHECKS file for (very) basic health check #13 ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.14 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- default git dync to main branch #13 ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.13 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- ref #13 pass git url dokky sync ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.12 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #13 add environment to deploy.yml ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.11 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Debug #13 ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.10 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `main`
+
+- debug #13 ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.9 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #13 target main branch when deploying ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
+# v0.0.8 (Fri Apr 15 2022)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, null[@joeltejeda](https://github.com/joeltejeda), for all your work!
+
+#### 🐛 Bug Fix
+
+- #13 adding action to deploye merged branches [#14](https://github.com/KarmaComputing/minimalcd/pull/14) ([@joeltejeda](https://github.com/joeltejeda) [@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 2
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.7 (Tue Apr 12 2022)
 
 #### ⚠️ Pushed to `main`
