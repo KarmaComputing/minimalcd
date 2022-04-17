@@ -1,3 +1,15 @@
+# v0.0.17 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #13 remove redundant deploy.yaml step ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.16 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
