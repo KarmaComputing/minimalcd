@@ -6,16 +6,18 @@ This is a minimal viable example of many of the concepts in DevOps which might h
 This is a complete web application which:
 
 - [x] ✔️ Automatically generates releases based on semantic version for every merge into the `main` branch (using [intuit/auto](https://github.com/intuit/auto))
-- [x] 🗄️ Database migrations are version controlled and ran upon app startup
+- [x] 🗄️ Database migrations are [version controlled](https://github.com/KarmaComputing/minimalcd/tree/main/src/migrations/versions) and ran upon app startup
     - This repository uses [alembic](https://alembic.sqlalchemy.org/en/latest/) (python) but you might use [alembic/doctrine](https://github.com/doctrine/migrations) (php), flyway/liquibase (java) - the concept is the same
-- [x] 🔃 When a pull request gets merged into the main branch, the latest application is deployed (using [Dokku](https://dokku.com/))
+- [x] 🔎 When a pull request is opened, a [preview application](https://github.com/KarmaComputing/minimalcd/actions/workflows/pr-preview.yml) is automatically built, with a url so people can view the proposed new version
+- [x] 🔃 When a pull request gets merged into the main branch, the latest application is automatically deployed (using [Dokku](https://dokku.com/)). ([Pipeline Code](https://github.com/KarmaComputing/minimalcd/actions/workflows/deploy.yml) / [UI](https://github.com/KarmaComputing/minimalcd/actions/workflows/deploy.yml))
     - You might use Kubernetes with ArgoCD (the underlying concepts are the same)
 - [x] 💾 A backup/snapshot of any database is taken pre and post each release
 - [x] 🚨 Codebase is regularly automatically scanned for known security issues
-- [x] ☸️ At each release a container is built and published to a container registry
+- [x] ☸️ At each release a container is built and published to a container registry ([Pipeline Code](https://github.com/KarmaComputing/minimalcd/blob/main/.github/workflows/publish-container.yaml) / [UI](https://github.com/KarmaComputing/minimalcd/actions/workflows/publish-container.yaml))
+
+
 
 ## Local Development
-
 ```
 cd src
 python3.9 -m venv venv
@@ -49,6 +51,8 @@ podman run -p 8082:80 minimalcd
 ```
 
 # Day0
+
+> (almost) Everything below this point are instructions if you wanted to set this up yourself from scratch
 
 ### Dokku
 
