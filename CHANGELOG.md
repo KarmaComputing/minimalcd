@@ -1,3 +1,15 @@
+# v0.0.19 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #13 keyscan for deployment ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.18 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
