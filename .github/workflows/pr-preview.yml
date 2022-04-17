@@ -78,7 +78,7 @@ jobs:
 
       - name: Click to see your PR web address
         env:
-          DOKKU_DOMAIN: ${{ secrets.DOKKU_DOMAIN }}
+          DOKKU_DOMAIN: pcpink.co.uk
         run: |
           echo Visit your pr here: http://${{ github.head_ref }}.${{ env.DOKKU_DOMAIN}}
 
