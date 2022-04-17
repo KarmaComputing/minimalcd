@@ -19,12 +19,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Perform backup
-        run: |
-          # Exit if any errors
-          set -x
-          # Pass BACKUP_SCRIPT to bash as stdin
-          bash -s ${{ secrets.BACKUP_SCRIPT }}
       - name: Deploy
         run: |
           set -x
@@ -35,5 +29,12 @@ jobs:
           ssh dokku@${{ secrets.DOKKU_HOST }} -C dokku builder:set minimalcd build-dir src
           ssh dokku@${{ secrets.DOKKU_HOST }} -C "dokku builder-dockerfile:set minimalcd dockerfile-path Dockerfile"
           ssh dokku@${{ secrets.DOKKU_HOST }} -C "dokku git:sync --build minimalcd" https://github.com/KarmaComputing/minimalcd.git main
+
+      - name: Perform post deploy backup
+        run: |
+          # Exit if any errors
+          set -x
+          # Pass BACKUP_SCRIPT to bash as stdin
+          echo ${{ secrets.BACKUP_SCRIPT }} | bash -s
           
       - run: echo "This job's status is ${{ job.status }}."
