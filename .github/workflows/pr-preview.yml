@@ -48,7 +48,6 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
-          APP_NAME: minimalcd
         run: |
           set -x
           echo The PR was raised by: ${{ github.event.pull_request.user.login }}
@@ -58,7 +57,7 @@ jobs:
           ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
           echo Creating dokku app ${{ github.head_ref }}
           ssh dokku@$DOKKU_HOST -C "dokku apps:create ${{ env.SUBDOMAIN }}" | true
-          ssh dokku@$DOKKU_HOST -C "dokku builder-dockerfile:set $APP_NAME dockerfile-path src/Dockerfile"
+          ssh dokku@$DOKKU_HOST -C "dokku builder-dockerfile:set ${{ env.SUBDOMAIN }} dockerfile-path src/Dockerfile"
           ssh dokku@$DOKKU_HOST -C "dokku git:initialize ${{ env.SUBDOMAIN }}"
           ssh dokku@$DOKKU_HOST -C "dokku git:set ${{ env.SUBDOMAIN }} deploy-branch ${{ github.head_ref }}"
 
