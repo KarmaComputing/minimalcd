@@ -1,3 +1,15 @@
+# v0.0.37 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- manage expectations ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.36 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
