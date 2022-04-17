@@ -1,4 +1,4 @@
-# Minimal Viable CD
+# Minimal Viable Continuous delivery (CD)
 
 [![Release](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml/badge.svg)](https://github.com/KarmaComputing/minimalcd/actions/workflows/release.yml)
 
