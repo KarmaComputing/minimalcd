@@ -108,7 +108,7 @@ jobs:
   destroy_pr_preview:
     runs-on: ubuntu-latest
     # only run when a pull request is closed
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    if: github.event.action == 'closed'
     steps:
       - name: Work out preview url subdomain
         run: |
