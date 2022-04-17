@@ -1,3 +1,15 @@
+# v0.0.32 (Sun Apr 17 2022)
+
+#### 🐛 Bug Fix
+
+- Fix #18 add publish container [#19](https://github.com/KarmaComputing/minimalcd/pull/19) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.31 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
