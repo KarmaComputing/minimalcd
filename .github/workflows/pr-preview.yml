@@ -65,6 +65,7 @@ jobs:
           echo The PR was raised by: ${{ github.event.pull_request.user.login }}
           eval `ssh-agent -s`
           ssh-add - <<< "$SSH_PRIVATE_KEY"
+          ssh dokku@$DOKKU_HOST -C "dokku apps:unlock --force ${{ env.SUBDOMAIN }}" | true
           echo deleting dokku app ${{ github.head_ref }}
           ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
           echo Creating dokku app ${{ github.head_ref }}
