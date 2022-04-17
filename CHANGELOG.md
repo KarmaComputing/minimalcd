@@ -1,3 +1,15 @@
+# v0.0.23 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Update README.md ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.22 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
