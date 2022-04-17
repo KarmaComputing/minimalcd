@@ -1,3 +1,15 @@
+# v0.0.25 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- correct dokku_host in deploy ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.24 (Sun Apr 17 2022)
 
 #### 🐛 Bug Fix
