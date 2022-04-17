@@ -1,3 +1,15 @@
+# v0.0.28 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #15 perform database backup post deploy ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.27 (Sun Apr 17 2022)
 
 #### 🐛 Bug Fix
