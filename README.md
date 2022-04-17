@@ -3,7 +3,7 @@
 > Have you ever wanted to learn Devops, asked "What is Devops" or wanted to start learning DevOps?<br /><br />
 This is a minimal viable example of many of the concepts in DevOps which might help you continue to uncover better ways of doing it and help others learn too. <br /><br />Explore this repo, [ask questions](https://github.com/KarmaComputing/minimalcd/discussions/20) and learn
 
-This is a complete web application which:
+This is a minimal web application with state (database) which:
 
 - [x] ✔️ Automatically generates releases based on semantic version for every merge into the `main` branch (using [intuit/auto](https://github.com/intuit/auto))
 - [x] 🗄️ Database migrations are [version controlled](https://github.com/KarmaComputing/minimalcd/tree/main/src/migrations/versions) and ran upon app startup
