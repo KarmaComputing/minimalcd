@@ -26,8 +26,8 @@ jobs:
           ssh-keyscan ${{ secrets.DOKKU_HOST }}>> ~/.ssh/known_hosts
           eval `ssh-agent -s`
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY}}"
-          ssh dokku@$DOKKU_HOST -C dokku builder:set minimalcd build-dir src
-          ssh dokku@$DOKKU_HOST -C "dokku builder-dockerfile:set ${{ env.SUBDOMAIN }} dockerfile-path Dockerfile"
+          ssh dokku@${{ secrets.DOKKU_HOST }} -C dokku builder:set minimalcd build-dir src
+          ssh dokku@${{ secrets.DOKKU_HOST }} -C "dokku builder-dockerfile:set ${{ env.SUBDOMAIN }} dockerfile-path Dockerfile"
           ssh dokku@${{ secrets.DOKKU_HOST }} -C "dokku git:sync --build minimalcd" https://github.com/KarmaComputing/minimalcd.git main
           
       - run: echo "This job's status is ${{ job.status }}."
