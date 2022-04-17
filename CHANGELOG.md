@@ -1,3 +1,15 @@
+# v0.0.29 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Add code scanning ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.28 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
