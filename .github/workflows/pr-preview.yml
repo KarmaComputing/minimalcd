@@ -62,7 +62,7 @@ jobs:
           ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
           echo Creating dokku app ${{ github.head_ref }}
           ssh dokku@$DOKKU_HOST -C "dokku apps:create ${{ env.SUBDOMAIN }}" | true
-          ssh dokku@$DOKKU_HOST -C dokku builder:set minimalcd build-dir src
+          ssh dokku@$DOKKU_HOST -C dokku builder:set ${{ env.SUBDOMAIN }} build-dir src
           ssh dokku@$DOKKU_HOST -C "dokku builder-dockerfile:set ${{ env.SUBDOMAIN }} dockerfile-path Dockerfile"
           ssh dokku@$DOKKU_HOST -C "dokku git:initialize ${{ env.SUBDOMAIN }}"
           ssh dokku@$DOKKU_HOST -C "dokku git:set ${{ env.SUBDOMAIN }} deploy-branch ${{ github.head_ref }}"
