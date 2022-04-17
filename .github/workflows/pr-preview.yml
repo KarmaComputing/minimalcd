@@ -48,6 +48,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+          DOKKU_DOMAIN: ${{ secrets.DOKKU_DOMAIN }}
         run: |
           set -x
           echo The PR was raised by: ${{ github.event.pull_request.user.login }}
@@ -70,6 +71,26 @@ jobs:
           app-name: ${{ env.SUBDOMAIN }}
           git-push-flags: '--force'
           remote-branch: ${{ github.head_ref }}
+
+      - name: Click to see your PR web address
+        env:
+          DOKKU_DOMAIN: ${{ secrets.DOKKU_DOMAIN }}
+        run: |
+          echo Visit your pr here: http://${{ github.head_ref }}.${{ env.DOKKU_DOMAIN}}
+
+      - name: 'Comment PR with web address of application live preview'
+        env:
+          DOKKU_DOMAIN: ${{ secrets.DOKKU_DOMAIN }}
+        uses: actions/github-script@v3
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "🙌 Live preview is here: http://${{ github.head_ref }}.${{ env.DOKKU_DOMAIN}}"
+            })
       
 
   destroy_pr_preview:
