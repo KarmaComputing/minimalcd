@@ -20,13 +20,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Setup ssh access
-        run: |
-          set -x
-          mkdir -p ~/.ssh
-          eval `ssh-agent -s`
-          ssh-add - <<< "${{ secrets.SSH__PRIVATE_KEY}}"
-          ssh-keyscan ${{ secrets.DOKKU_HOST }}>> ~/.ssh/known_hosts
       - name: Deploy dokku app
         run: |
           set -x
