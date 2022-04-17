@@ -1,3 +1,20 @@
+# v0.0.24 (Sun Apr 17 2022)
+
+#### 🐛 Bug Fix
+
+- #5 adding pr preview github actions [#12](https://github.com/KarmaComputing/minimalcd/pull/12) ([@joeltejeda](https://github.com/joeltejeda) [@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### ⚠️ Pushed to `main`
+
+- always set docker working directory and containerfile name ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 2
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.23 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
