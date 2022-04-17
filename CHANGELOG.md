@@ -1,3 +1,15 @@
+# v0.0.34 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- #18 set docker build directory to src ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.33 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
