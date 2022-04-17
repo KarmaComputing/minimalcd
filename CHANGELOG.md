@@ -1,3 +1,15 @@
+# v0.0.26 (Sun Apr 17 2022)
+
+#### ⚠️ Pushed to `main`
+
+- correct app name in deploy ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.25 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
