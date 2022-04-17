@@ -27,5 +27,5 @@ jobs:
           eval `ssh-agent -s`
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY}}"
           ssh dokku@${{ secrets.DOKKU_HOST }} -C "dokku git:sync --build minimalcd" https://github.com/KarmaComputing/minimalcd.git main
-
-      - run: echo "This job's status is: ${{ job.status }}."
+          
+      - run: echo "This job's status is ${{ job.status }}."
