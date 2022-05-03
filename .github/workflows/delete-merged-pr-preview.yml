@@ -1,0 +1,22 @@
+name: delete merged pr preview
+on: 
+  pull_request:
+    types: [closed]
+
+jobs:
+  Delete:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: delete dokku app 
+        if: github.event.pull_request.merged == true
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+        run: |
+          set -x
+          eval `ssh-agent -s` 
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          echo deleting dokku app ${{ github.head_ref }}
+          ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ github.head_ref }}" | true
+
