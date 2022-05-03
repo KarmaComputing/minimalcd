@@ -1,3 +1,15 @@
+# v0.0.38 (Tue May 03 2022)
+
+#### 🐛 Bug Fix
+
+- adding workflow to delete the dokku container [#24](https://github.com/KarmaComputing/minimalcd/pull/24) ([@joeltejeda](https://github.com/joeltejeda))
+
+#### Authors: 1
+
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.37 (Sun Apr 17 2022)
 
 #### ⚠️ Pushed to `main`
