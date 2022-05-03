@@ -1,3 +1,15 @@
+# v0.0.42 (Tue May 03 2022)
+
+#### 🐛 Bug Fix
+
+- adding merged github action [#28](https://github.com/KarmaComputing/minimalcd/pull/28) ([@joeltejeda](https://github.com/joeltejeda))
+
+#### Authors: 1
+
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.41 (Tue May 03 2022)
 
 #### 🐛 Bug Fix
