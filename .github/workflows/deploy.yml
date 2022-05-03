@@ -38,3 +38,16 @@ jobs:
           echo ${{ secrets.BACKUP_SCRIPT }} | bash -s
           
       - run: echo "This job's status is ${{ job.status }}."
+      - name: delete dokku app
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
+          DOKKU_DOMAIN: ${{ secrets.DOKKU_DOMAIN }}
+        run: |
+          set -x
+          eval `ssh-agent -s` 
+          ssh-add - <<< "$SSH_PRIVATE_KEY"
+          echo deleting dokku app ${{ github.head_ref }}
+          ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
+          echo Creating dokku app ${{ github.head_ref }}
+
