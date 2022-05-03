@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: delete dokku app 
-        if: github.event.pull_request.merged == true
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
