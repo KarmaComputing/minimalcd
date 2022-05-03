@@ -15,6 +15,8 @@ jobs:
           DOKKU_HOST: ${{ secrets.DOKKU_HOST }}
         run: |
           set -x
+          mkdir -p ~/.ssh
+          ssh-keyscan ${{ secrets.DOKKU_HOST }}>> ~/.ssh/known_hosts
           eval `ssh-agent -s` 
           ssh-add - <<< "$SSH_PRIVATE_KEY"
           echo deleting dokku app ${{ github.head_ref }}
