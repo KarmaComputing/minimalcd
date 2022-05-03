@@ -30,7 +30,7 @@ jobs:
         with:
           # destroy a review app
           command: review-apps:destroy
-          git_remote_url: ssh://dokku@$DOKKU_HOST/${{ github.head_ref }}
+          git_remote_url: ssh://dokku@${{ secrets.DOKKU_HOST }}/${{ github.head_ref }}
           # specify a name for the review app
           review_app_name: ${{ github.head_ref }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
