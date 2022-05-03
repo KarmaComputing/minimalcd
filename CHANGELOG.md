@@ -1,3 +1,15 @@
+# v0.0.41 (Tue May 03 2022)
+
+#### 🐛 Bug Fix
+
+- deleting dokku containers on closed pull request [#27](https://github.com/KarmaComputing/minimalcd/pull/27) ([@joeltejeda](https://github.com/joeltejeda))
+
+#### Authors: 1
+
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.40 (Tue May 03 2022)
 
 #### 🐛 Bug Fix
