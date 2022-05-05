@@ -19,7 +19,7 @@ jobs:
           eval `ssh-agent -s` 
           ssh-add - <<< "$SSH_PRIVATE_KEY"
           echo deleting dokku app ${{ github.head_ref }}
-          ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ github.head_ref }}" | true
+          ssh dokku@$DOKKU_HOST -C "dokku -- --force apps:destroy ${{ github.head_ref }}" | true
 
   destroy_review_app:
     runs-on: ubuntu-latest
