@@ -30,12 +30,6 @@ jobs:
         run: |
           ls ${{ github.workspace }}
 
-      - name: Perform backup
-        run: |
-          # Exit if any errors
-          set -x
-          # Pass BACKUP_SCRIPT to bash as stdin
-          echo ${{ secrets.BACKUP_SCRIPT }} | bash -s 
 
       - name: Prepare runner with ssh keys
         env:

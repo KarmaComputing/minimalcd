@@ -21,17 +21,3 @@ jobs:
           echo deleting dokku app ${{ github.head_ref }}
           ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ github.head_ref }}" | true
 
-  destroy_review_app:
-    runs-on: ubuntu-latest
-    # only run when a pull request is closed
-    steps:
-      - name: Destroy the review app
-        uses: dokku/github-action@master
-        with:
-          # destroy a review app
-          command: review-apps:destroy
-          git_remote_url: ssh://dokku@${{ secrets.DOKKU_HOST }}/${{ github.head_ref }}
-          # specify a name for the review app
-          review_app_name: ${{ github.head_ref }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-
