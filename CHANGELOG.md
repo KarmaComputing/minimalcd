@@ -1,3 +1,15 @@
+# v0.0.45 (Thu May 05 2022)
+
+#### 🐛 Bug Fix
+
+- deleting dokku contaier 2second attempt [#32](https://github.com/KarmaComputing/minimalcd/pull/32) ([@joeltejeda](https://github.com/joeltejeda))
+
+#### Authors: 1
+
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.44 (Thu May 05 2022)
 
 #### 🐛 Bug Fix
