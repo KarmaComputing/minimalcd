@@ -53,7 +53,7 @@ jobs:
         run: |
           set -x
           echo SUBDOMAIN=`echo "${{ github.head_ref }}" | tr '[:upper:]' '[:lower:]' | cut -c -60` >> $GITHUB_ENV
-          echo "::set-output name=preview_url::http://${{ github.event.pull_request.number }}-minimalcd.pcpink.co.uk"
+          echo "::set-output name=preview_url::http://${{ github.head_ref }}.pcpink.co.uk"
 
       - name: Create dokku app for pr branch if dosent already exist using dokku apps:create
         env:
@@ -67,7 +67,7 @@ jobs:
           ssh-add - <<< "$SSH_PRIVATE_KEY"
           ssh dokku@$DOKKU_HOST -C "dokku apps:unlock --force ${{ env.SUBDOMAIN }}" | true
           echo deleting dokku app ${{ github.head_ref }}
-          ssh dokku@$DOKKU_HOST -C "dokku apps:destroy --force ${{ env.SUBDOMAIN }}" | true
+          ssh dokku@$DOKKU_HOST -C "dokku -- --force apps:destroy ${{ env.SUBDOMAIN }}" | true
           echo Creating dokku app ${{ github.head_ref }}
           ssh dokku@$DOKKU_HOST -C "dokku apps:create ${{ env.SUBDOMAIN }}" | true
           ssh dokku@$DOKKU_HOST -C dokku builder:set ${{ env.SUBDOMAIN }} build-dir src
