@@ -1,3 +1,15 @@
+# v0.0.44 (Thu May 05 2022)
+
+#### 🐛 Bug Fix
+
+- adding the destroy command when merged [#31](https://github.com/KarmaComputing/minimalcd/pull/31) ([@joeltejeda](https://github.com/joeltejeda))
+
+#### Authors: 1
+
+- [@joeltejeda](https://github.com/joeltejeda)
+
+---
+
 # v0.0.43 (Tue May 03 2022)
 
 #### 🐛 Bug Fix
