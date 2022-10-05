@@ -1,3 +1,15 @@
+# v0.0.46 (Wed Oct 05 2022)
+
+#### 🐛 Bug Fix
+
+- Fix #34 added container hosting service [#35](https://github.com/KarmaComputing/minimalcd/pull/35) ([@chrisjsimpson](https://github.com/chrisjsimpson))
+
+#### Authors: 1
+
+- [@chrisjsimpson](https://github.com/chrisjsimpson)
+
+---
+
 # v0.0.45 (Thu May 05 2022)
 
 #### 🐛 Bug Fix
