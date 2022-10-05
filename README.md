@@ -112,3 +112,9 @@ For changing the working directory of the `docker build` context, use:
 ssh $DOKKU_USERNAME@$DOKKU_SERVER_IP -C dokku builder:set minimalcd build-dir src
 ```
 See https://github.com/dokku/dokku/pull/4502 for more details.
+
+# Container Hosting Service
+
+Container hosting service is a (you guessed it!) container hosting service, which automates all the automation above for your own pet projects 🚀
+
+Checkout [Container Hosting Service](https://container-hosting.anotherwebservice.com/?minimalcd)
